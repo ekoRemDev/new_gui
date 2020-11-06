@@ -27,8 +27,8 @@ class _FirstPageState extends State<FirstPage> {
       resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: true,
       backgroundColor: Color(0xff707070),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+      body: ListView(
+        // mainAxisAlignment: MainAxisAlignment.start,
         children: [
 
 
