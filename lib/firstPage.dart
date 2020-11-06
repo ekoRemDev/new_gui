@@ -8,15 +8,24 @@ class FirstPage extends StatefulWidget {
 
 class _FirstPageState extends State<FirstPage> {
 
+  bool _isEmailValid = false;
+  bool _isPasswordValid = false;
+  double _fontSize = 18.00;
+
+
   @override
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]); // Fixed the Rotation
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: true,
       backgroundColor: Color(0xff707070),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -25,7 +34,7 @@ class _FirstPageState extends State<FirstPage> {
 
           Container(
             width : MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.183 ,
+            height: MediaQuery.of(context).size.height * 0.10 ,
             child: VerticalDivider(thickness: MediaQuery.of(context).size.width*0.003,color: Colors.white,),
           ),
           Container(
@@ -80,7 +89,7 @@ class _FirstPageState extends State<FirstPage> {
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width * 0.632,
-                          child: Text("어서오세요. \n 라이브쇼핑 방송용 어플입니다.",textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.normal,),),
+                          child: Text("어서오세요. 라이브쇼핑 방송용 어플입니다.",textAlign: TextAlign.center, style: TextStyle(fontSize: _fontSize, color: Colors.white,fontWeight: FontWeight.normal,),),
                         ),
                       ],
                     ),
@@ -99,54 +108,154 @@ class _FirstPageState extends State<FirstPage> {
 
                     SizedBox(height: MediaQuery.of(context).size.height * 0.569 * 0.141,),
 
-                    /// field 1
+                    /// email field
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.050,),
+
+                        /// label
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.893,
-                          height: MediaQuery.of(context).size.height * 0.102,
-                          color: Colors.amber.withOpacity(0.3),
-                          child: Image.asset('assets/images/logo.png',
-                            width: MediaQuery.of(context).size.width * 0.192,
-                            height: MediaQuery.of(context).size.height * 0.037,
-                            fit: BoxFit.contain,
+                          width: MediaQuery.of(context).size.width * 0.20,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "ID",
+                                style: TextStyle(
+                                  color: Color(0xffFFFFFF),
+                                    fontSize: _fontSize,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
+
+                        /// email input field
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.70,
+                          child: TextField(
+                            style: TextStyle(
+                              color: Color(0xffFFFFFF),
+                              fontSize: _fontSize,
+                            ),
+                            decoration: InputDecoration(
+                              // border: InputBorder.none,
+                                border: new UnderlineInputBorder(
+                                    borderSide: new BorderSide(
+                                        color: Color(0xffFFFFFF)
+                                    )
+                                ),
+                              hintText: "abc123@naver.com",
+                              hintStyle: TextStyle(
+                                color: Color(0xffFFFFFF),
+                                fontSize: _fontSize,
+                              ),
+                              suffixIcon: _isEmailValid == true
+                                  ? IconButton(icon: Icon(Icons.clear, color: Colors.green[900],),)
+                                  : IconButton(icon: Icon(Icons.clear, color: Colors.red[900],),)
+                            ),
+                            onSubmitted: (e) {
+                            },
+                            onChanged:(email){
+                              if (email.length > 3) {
+                                setState(() {
+                                  _isEmailValid = true;
+                                });
+                              }
+                              else{
+                                setState(() {
+                                  _isEmailValid = false;
+                                });
+                              }
+                            },
+                            keyboardType: TextInputType.emailAddress,
+                          ),
+                        ),
+
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.050,),
+
                       ],
                     ),
 
                     SizedBox(height: MediaQuery.of(context).size.height * 0.569 * 0.012,),
 
-                    /// field 2
+                    /// password field
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.050,),
+
+                        /// label
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.893,
-                          height: MediaQuery.of(context).size.height * 0.102,
-                          color: Colors.amber.withOpacity(0.3),
-                          child: Image.asset('assets/images/logo.png',
-                            width: MediaQuery.of(context).size.width * 0.192,
-                            height: MediaQuery.of(context).size.height * 0.037,
-                            fit: BoxFit.contain,
+                          width: MediaQuery.of(context).size.width * 0.20,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "PW",
+                                style: TextStyle(
+                                  color: Color(0xffFFFFFF),
+                                  fontSize: _fontSize,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
+
+                        /// password input field
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.70,
+                          child: TextField(
+                            style: TextStyle(
+                              color: Color(0xffFFFFFF),
+                              fontSize: _fontSize,
+                            ),
+                            decoration: InputDecoration(
+                                border: new UnderlineInputBorder(
+                                    borderSide: new BorderSide(
+                                        color: Color(0xffFFFFFF)
+                                    )
+                                ),
+                                hintText: "비밀번호를 입력해주세요.",
+                                hintStyle: TextStyle(
+                                  color: Color(0xffFFFFFF),
+                                  fontSize: _fontSize,
+                                ),
+                                suffixIcon: _isPasswordValid == true
+                                    ? IconButton(icon: Icon(Icons.clear, color: Colors.green[900],),)
+                                    : IconButton(icon: Icon(Icons.clear, color: Colors.red[900],),)
+                            ),
+                            onSubmitted: (e) {
+                            },
+                            onChanged:(email){
+                              if (email.length > 3) {
+                                setState(() {
+                                  _isPasswordValid = true;
+                                });
+                              }
+                              else{
+                                setState(() {
+                                  _isPasswordValid = false;
+                                });
+                              }
+                            },
+                            keyboardType: TextInputType.emailAddress,
+                          ),
+                        ),
+
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.050,),
+
                       ],
                     ),
 
                     // SizedBox(height: MediaQuery.of(context).size.height * 0.569 * 0.021,),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.569 * 0.021,),
 
-
-
-
-
-
-
-                  ],),
-
-
+                  ],
+                ),
               ],
             ),
           ),
@@ -154,23 +263,43 @@ class _FirstPageState extends State<FirstPage> {
 
           SizedBox(height: MediaQuery.of(context).size.height * 0.030,),
 
-          /// field 2
+          /// Button
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+
+              SizedBox(width: MediaQuery.of(context).size.width * 0.050,),
+
               Container(
-                width: MediaQuery.of(context).size.width * 0.893,
-                height: MediaQuery.of(context).size.height * 0.102,
-                color: Colors.amber.withOpacity(0.3),
-                child: Image.asset('assets/images/logo.png',
-                  width: MediaQuery.of(context).size.width * 0.192,
-                  height: MediaQuery.of(context).size.height * 0.037,
-                  fit: BoxFit.contain,
+                // height: MediaQuery.of(context).size.height * 0.055,
+                height: 45,
+                width: MediaQuery.of(context).size.width * 0.90,
+                child: ButtonTheme(
+                  highlightColor: Colors.red,
+                  splashColor: Colors.green,
+                  minWidth: MediaQuery.of(context).size.width,
+                  child: RaisedButton(
+                    elevation: 5,
+                    color: Color(0xff030303).withOpacity(0.5),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(10.0),
+                        // side: BorderSide(color: Colors.white),
+                    ),
+                    onPressed: (){
+                      // Do some stuff here
+                    },
+                    child: Text(
+                      "로그인하기",
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      style: TextStyle(fontSize: _fontSize, color: Color(0xffff5570)),),
+                  ),
                 ),
               ),
+
+              SizedBox(width: MediaQuery.of(context).size.width * 0.050,),
             ],
           ),
-
 
           SizedBox(height: MediaQuery.of(context).size.height * 0.040,),
 
@@ -179,25 +308,16 @@ class _FirstPageState extends State<FirstPage> {
             children: [
               Container(
                 width: MediaQuery.of(context).size.width * 0.283,
-                height: MediaQuery.of(context).size.width * 0.018,
-                child: Text("쉽고 재밋는 방송 되시길 바라겠습니다.",textAlign: TextAlign.center, style: TextStyle(fontSize: 13, color: Colors.white,fontWeight: FontWeight.normal,),),
+                height: MediaQuery.of(context).size.width * 0.060,
+                child: Text("계정 찾기",textAlign: TextAlign.center, style: TextStyle(fontSize: _fontSize, color: Colors.white,fontWeight: FontWeight.normal,),),
               ),
             ],
           ),
 
-
-
-
-
-
         ],
       ),
 
-
-
-
     );
   }
-
 
 }
