@@ -89,7 +89,16 @@ class _FirstPageState extends State<FirstPage> {
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width * 0.632,
-                          child: Text("어서오세요. 라이브쇼핑 방송용 어플입니다.",textAlign: TextAlign.center, style: TextStyle(fontSize: _fontSize, color: Colors.white,fontWeight: FontWeight.normal,),),
+                          child: Text("어서오세요.",textAlign: TextAlign.center, style: TextStyle(fontSize: _fontSize, color: Colors.white,fontWeight: FontWeight.normal,),),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.632,
+                          child: Text("라이브쇼핑 방송용 어플입니다.",textAlign: TextAlign.center, style: TextStyle(fontSize: _fontSize, color: Colors.white,fontWeight: FontWeight.normal,),),
                         ),
                       ],
                     ),
@@ -100,8 +109,8 @@ class _FirstPageState extends State<FirstPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.394,
-                          child: Text("쉽고 재밋는 방송 되시길 바라겠습니다.",textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.white,fontWeight: FontWeight.normal,),),
+                          width: MediaQuery.of(context).size.width * 0.50,
+                          child: Text("쉽고 재밋는 방송 되시길 바라겠습니다.",textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.white,fontWeight: FontWeight.normal,),),
                         ),
                       ],
                     ),
