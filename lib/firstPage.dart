@@ -291,7 +291,7 @@ class _FirstPageState extends State<FirstPage> {
                     elevation: 5,
                     color: Color(0xff030303).withOpacity(0.5),
                     shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(10.0),
+                        borderRadius: new BorderRadius.circular(5.0),
                         // side: BorderSide(color: Colors.white),
                     ),
                     onPressed: (){
