@@ -183,8 +183,14 @@ class _FirstPageState extends State<FirstPage> {
                                   fontSize: _fontSize,
                                 ),
                                 suffixIcon: _isEmailValid == true
-                                    ? Image.asset('assets/images/accept.png',height: 10, width: 10,fit:BoxFit.fitWidth ,)
-                                    : Container(width:10, height: 10,child: Image.asset('assets/images/decline.png',height: 20, width: 10,fit:BoxFit.cover ,))
+                                    ? Padding(
+                                        padding: EdgeInsets.symmetric(vertical: 10),
+                                        child: Image.asset('assets/images/accept.png',),
+                                    )
+                                    : Padding(
+                                        padding: EdgeInsets.symmetric(vertical: 10),
+                                        child: Image.asset('assets/images/decline.png',),
+                                )
                               ),
                               onSubmitted: (e) {
                                 // do something
@@ -253,8 +259,14 @@ class _FirstPageState extends State<FirstPage> {
                                     fontSize: _fontSize,
                                   ),
                                   suffixIcon: _isPasswordValid == true
-                                      ? IconButton(icon: Icon(Icons.clear, color: Colors.green[900],),)
-                                      : IconButton(icon: Icon(Icons.clear, color: Colors.red[900],),)
+                                      ? Padding(
+                                          padding: EdgeInsets.symmetric(vertical: 10),
+                                          child: Image.asset('assets/images/accept.png',),
+                                        )
+                                      : Padding(
+                                          padding: EdgeInsets.symmetric(vertical: 10),
+                                          child: Image.asset('assets/images/decline.png',),
+                                        )
                               ),
                               onSubmitted: (e) {
                               },
