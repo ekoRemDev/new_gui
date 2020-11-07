@@ -260,11 +260,11 @@ class _FirstPageState extends State<FirstPage> {
                                   ),
                                   suffixIcon: _isPasswordValid == true
                                       ? Padding(
-                                          padding: EdgeInsets.symmetric(vertical: 10),
+                                          padding: EdgeInsets.symmetric(vertical: 0),
                                           child: Image.asset('assets/images/accept.png',),
                                         )
                                       : Padding(
-                                          padding: EdgeInsets.symmetric(vertical: 10),
+                                          padding: EdgeInsets.symmetric(vertical: 0),
                                           child: Image.asset('assets/images/decline.png',),
                                         )
                               ),
@@ -296,7 +296,7 @@ class _FirstPageState extends State<FirstPage> {
           ),
 
 
-          SizedBox(height: 30,),
+          SizedBox(height: 20,),
 
           /// Button
           Row(
